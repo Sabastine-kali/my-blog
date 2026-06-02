@@ -5,9 +5,12 @@ import Header from '../components/Header.astro';
 // Get all blog posts
 const posts = await getCollection('blog');
 
-// Keep only valid posts (prevents undefined errors)
+// Keep only valid posts
 const validPosts = posts.filter(
-  (post) => post.slug && post.data?.pubDate && post.data?.title
+  (post) =>
+    post.slug &&
+    post.data?.title &&
+    post.data?.pubDate
 );
 
 // Sort newest first
@@ -15,19 +18,22 @@ const sortedPosts = validPosts.sort(
   (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
 );
 
-// Latest post safely
+// Latest post (safe)
 const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
+
+// Hard-safe fallback (your confirmed latest post)
+const featuredPostSlug = "why-most-resumes-fail-ats";
 ---
 
 <Header />
 
-<main style="max-width: 800px; margin: auto; padding: 20px;">
+<main style="max-width: 850px; margin: auto; padding: 20px;">
 
   <h1>Welcome to Career Growth Hub</h1>
 
   <p>
-    We publish practical guides to help you improve your career,
-    write better resumes, and grow your income with digital products.
+    Learn how to build ATS-friendly resumes, grow your career,
+    and sell digital products online.
   </p>
 
   <hr />
@@ -35,13 +41,15 @@ const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
   <h2>🔥 Latest Article</h2>
 
   {latestPost ? (
-    <a href={`/blog/${latestPost.slug}/`} style="display: block;">
+    <a href={`/blog/${latestPost.slug}/`} style="display:block;">
       <h3>{latestPost.data.title}</h3>
       <p>{latestPost.data.description}</p>
       👉 Read Full Article
     </a>
   ) : (
-    <p>No articles available yet.</p>
+    <a href={`/blog/${featuredPostSlug}/`}>
+      👉 Read: Why Most Resumes Fail ATS Systems in 2026
+    </a>
   )}
 
   <hr />
@@ -52,15 +60,15 @@ const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
     <li>
       <strong>ATS Resume System</strong><br />
       Learn how to pass ATS filters and get more interviews.<br />
-      <a href="/ats-resume">Go to ATS Resume Kit →</a>
+      <a href="/ats-resume">👉 Go to ATS Resume Kit</a>
     </li>
 
     <br />
 
     <li>
       <strong>Blog</strong><br />
-      Explore all career and digital growth articles.<br />
-      <a href="/blog">View All Posts →</a>
+      Read all career growth and digital income articles.<br />
+      <a href="/blog">👉 View All Posts</a>
     </li>
   </ul>
 
@@ -69,12 +77,23 @@ const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
   <h2>💼 Featured Product</h2>
 
   <p>
-    ATS Resume Kit PRO helps you build ATS-optimized resumes that get you more interview calls.
+    ATS Resume Kit PRO helps you create resumes that pass ATS filters and get more interviews.
   </p>
 
   <a href="/ats-resume">
     👉 Get ATS Resume Kit PRO
   </a>
+
+  <hr />
+
+  <h2>📌 Quick Access</h2>
+
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/blog/why-most-resumes-fail-ats">Latest Article</a></li>
+    <li><a href="/ats-resume">ATS Resume Kit</a></li>
+  </ul>
 
   <footer style="margin-top: 40px;">
     <p>© 2026 Career Growth Hub. All rights reserved.</p>
