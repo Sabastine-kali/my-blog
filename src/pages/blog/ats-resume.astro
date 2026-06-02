@@ -10,12 +10,24 @@ const atsPosts = posts.filter(
 
 <h1>ATS Resume Articles</h1>
 
+<p>
+All guides, tips, and strategies to help you beat ATS systems and get more interviews.
+</p>
+
 <ul>
   {atsPosts.map((post) => (
     <li>
       <a href={`/blog/${post.slug}/`}>
-        {post.data.title}
+        <h3>{post.data.title}</h3>
       </a>
+      <small>{post.data.pubDate}</small>
+      <p>{post.data.description}</p>
     </li>
   ))}
 </ul>
+
+<hr />
+
+<a href="/ats-resume">
+  👉 Upgrade to ATS Resume Kit PRO
+</a>
