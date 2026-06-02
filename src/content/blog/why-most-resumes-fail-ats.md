@@ -39,3 +39,14 @@ If you want a complete ATS optimization system, templates, and recruiter-focused
 👉 Want a full ATS-ready resume system?
 Check here: https://gumroadbay.netlify.app/ats-resume
 
+<hr>
+
+<h3>Want a Done-For-You ATS Resume System?</h3>
+
+<p>
+Get the ATS Resume Kit PRO — templates, structure, and keyword system.
+</p>
+
+<a href="/ats-resume">
+👉 Get ATS Resume Kit PRO
+</a>
