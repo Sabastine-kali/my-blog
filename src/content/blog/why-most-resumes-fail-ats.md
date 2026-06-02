@@ -20,7 +20,7 @@ Modern companies use Applicant Tracking Systems (ATS) to scan resumes automatica
 * Wrong file structure
 * Generic descriptions
 
-## Why ATS Optimization Matters
+## Why ATS Resume Optimization Matters
 
 Recruiters often receive hundreds of applications for a single position. ATS software helps them filter candidates quickly.
 
