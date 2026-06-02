@@ -4,7 +4,7 @@ title: "Why Most Resumes Fail ATS Systems in 2026"
 description: "Learn why resumes get rejected by Applicant Tracking Systems and how to improve your chances."
 pubDate: 2026-06-02
 category: "ATS Resume"
-----------------------
+---
 
 # Why Most Resumes Fail ATS Systems in 2026
 
