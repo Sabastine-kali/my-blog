@@ -8,7 +8,18 @@ import HeaderLink from './HeaderLink.astro';
 		<h2><a href="/">{SITE_TITLE}</a></h2>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
+			<HeaderLink href="/">Home</HeaderLink>
+
+<div class="dropdown">
+  <a class="dropbtn" href="/blog">Blog</a>
+
+  <div class="dropdown-content">
+    <a href="/blog/ats-resume">ATS Resume</a>
+  </div>
+</div>
+
+<HeaderLink href="/about">About</HeaderLink>
+
 			<HeaderLink href="/blog/ats-resume">ATS Resume</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
@@ -74,6 +85,35 @@ import HeaderLink from './HeaderLink.astro';
 		text-decoration: none;
 		border-bottom-color: var(--accent);
 	}
+	.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: white;
+min-width: 160px;
+box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.dropdown-content a {
+color: black;
+padding: 10px 12px;
+display: block;
+text-decoration: none;
+}
+
+.dropdown-content a:hover {
+background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
 	.social-links,
 	.social-links a {
 		display: flex;
