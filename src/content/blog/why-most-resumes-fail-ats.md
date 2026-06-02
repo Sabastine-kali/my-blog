@@ -36,3 +36,6 @@ If you want a complete ATS optimization system, templates, and recruiter-focused
 
 [Get ATS Resume Kit PRO](/ats-resume)
 
+👉 Want a full ATS-ready resume system?
+Check here: /ats-resume
+
