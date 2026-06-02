@@ -1,1 +1,24 @@
 ats-resume.astro
+
+---
+
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+
+const atsPosts = posts.filter(
+(post) => post.data.category === 'ATS Resume'
+);
+--
+
+<h1>ATS Resume Articles</h1>
+
+<ul>
+  {atsPosts.map((post) => (
+    <li>
+      <a href={`/blog/${post.slug}/`}>
+        {post.data.title}
+      </a>
+    </li>
+  ))}
+</ul>
