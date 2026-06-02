@@ -10,7 +10,7 @@ category: "ATS Resume"
 
 Many job seekers never realize that their resumes are rejected before a recruiter even reads them.
 
-Modern companies use Applicant Tracking Systems (ATS) to scan resumes automatically. If your resume is not optimized properly, it may never reach human eyes.
+Modern companies use Applicant Tracking Systems (ATS) to scan resumes automatically. If your resume is not optimized properly, it may never reach human eyes, which then leads to job application rejection.
 
 ## Common ATS Resume Mistakes
 
