@@ -1,90 +1,86 @@
 ---
 import { getCollection } from 'astro:content';
+import Header from '../components/Header.astro';
 
 // get all blog posts
 const posts = await getCollection('blog');
 
-// sort newest first
-const sortedPosts = posts.sort(
-  (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
-);
+// sort safely (prevents undefined crash)
+const sortedPosts = posts
+  .filter(post => post.data?.pubDate)
+  .sort(
+    (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
+  );
 
-// latest post
-const latestPost = sortedPosts[0];
+// safe latest post check
+const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
 ---
 
-<h1>Welcome to Career Growth Hub</h1>
+<Header />
 
-<p>
-We publish simple, practical guides to help you grow your career, improve your skills, and increase your income through digital tools and strategies.
-</p>
+<main style="max-width: 800px; margin: auto; padding: 20px;">
 
-<hr />
+  <h1>Welcome to Career Growth Hub</h1>
 
-<h2>🔥 Latest Article</h2>
+  <p>
+    We publish practical guides to help you build better resumes,
+    grow your skills, and increase your income with digital products.
+  </p>
 
-<a href={`/blog/${latestPost.slug}/`}>
-  <h3>{latestPost.data.title}</h3>
-</a>
+  <hr />
 
-<p>{latestPost.data.description}</p>
+  <h2>🔥 Latest Article</h2>
 
-<a href={`/blog/${latestPost.slug}/`}>
-  👉 Read Full Article
-</a>
+  {latestPost ? (
+    <>
+      <a href={`/blog/${latestPost.slug}/`}>
+        <h3>{latestPost.data.title}</h3>
+      </a>
 
-<hr />
+      <p>{latestPost.data.description}</p>
 
-<h2>📂 Explore Topics</h2>
+      <a href={`/blog/${latestPost.slug}/`}>
+        👉 Read Full Article
+      </a>
+    </>
+  ) : (
+    <p>No articles yet.</p>
+  )}
 
-<ul>
-  <li>
-    <strong>ATS Resume System</strong><br />
-    Learn how to pass automated job filters and get more interviews.<br />
-    <a href="/ats-resume">Explore ATS Resume Kit →</a>
-  </li>
+  <hr />
 
-  <br />
+  <h2>📂 Explore Topics</h2>
 
-  <li>
-    <strong>Digital Income Guides</strong><br />
-    Learn how to build and sell digital products online.<br />
-    <a href="/blog">Read Articles →</a>
-  </li>
+  <ul>
+    <li>
+      <strong>ATS Resume System</strong><br />
+      Learn how to pass ATS filters and get more interviews.<br />
+      <a href="/ats-resume">Go to ATS Resume Kit →</a>
+    </li>
 
-  <br />
+    <br />
 
-  <li>
-    <strong>Career Growth Tips</strong><br />
-    Practical guides to improve your job applications and skills.<br />
-    <a href="/blog">View All Posts →</a>
-  </li>
-</ul>
+    <li>
+      <strong>All Blog Posts</strong><br />
+      Browse career growth and digital income articles.<br />
+      <a href="/blog">View Blog →</a>
+    </li>
+  </ul>
 
-<hr />
+  <hr />
 
-<h2>💼 Featured Product</h2>
+  <h2>💼 Featured Product</h2>
 
-<p>
-ATS Resume Kit PRO helps you build a resume that passes ATS filters and gets more interview calls.
-</p>
+  <p>
+    ATS Resume Kit PRO helps you create ATS-optimized resumes that pass recruiter filters.
+  </p>
 
-<a href="/ats-resume">
-  👉 Get ATS Resume Kit PRO
-</a>
+  <a href="/ats-resume">
+    👉 Get ATS Resume Kit PRO
+  </a>
 
-<hr />
+  <footer style="margin-top: 40px;">
+    <p>© 2026 Career Growth Hub</p>
+  </footer>
 
-<h2>📚 All Articles</h2>
-
-<p>
-Browse all guides and tutorials.
-</p>
-
-<a href="/blog">
-  View Blog →
-</a>
-
-<footer style="margin-top: 40px;">
-  <p>© 2026 Career Growth Hub. All rights reserved.</p>
-</footer>
+</main>
