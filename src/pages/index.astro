@@ -1,18 +1,22 @@
 ---
 import { getCollection } from 'astro:content';
 
+// get all blog posts
 const posts = await getCollection('blog');
 
 // sort newest first
-const latestPost = posts.sort(
+const sortedPosts = posts.sort(
   (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
-)[0];
+);
+
+// latest post
+const latestPost = sortedPosts[0];
 ---
 
 <h1>Welcome to Career Growth Hub</h1>
 
 <p>
-Learn how to create ATS-friendly resumes, get more interviews, and improve your job success.
+We publish simple, practical guides to help you grow your career, improve your skills, and increase your income through digital tools and strategies.
 </p>
 
 <hr />
@@ -31,10 +35,38 @@ Learn how to create ATS-friendly resumes, get more interviews, and improve your 
 
 <hr />
 
-<h2>💼 ATS Resume Kit PRO</h2>
+<h2>📂 Explore Topics</h2>
+
+<ul>
+  <li>
+    <strong>ATS Resume System</strong><br />
+    Learn how to pass automated job filters and get more interviews.<br />
+    <a href="/ats-resume">Explore ATS Resume Kit →</a>
+  </li>
+
+  <br />
+
+  <li>
+    <strong>Digital Income Guides</strong><br />
+    Learn how to build and sell digital products online.<br />
+    <a href="/blog">Read Articles →</a>
+  </li>
+
+  <br />
+
+  <li>
+    <strong>Career Growth Tips</strong><br />
+    Practical guides to improve your job applications and skills.<br />
+    <a href="/blog">View All Posts →</a>
+  </li>
+</ul>
+
+<hr />
+
+<h2>💼 Featured Product</h2>
 
 <p>
-A complete system to help you pass ATS filters and get more interviews.
+ATS Resume Kit PRO helps you build a resume that passes ATS filters and gets more interview calls.
 </p>
 
 <a href="/ats-resume">
@@ -43,12 +75,16 @@ A complete system to help you pass ATS filters and get more interviews.
 
 <hr />
 
-<h2>📚 Explore More Articles</h2>
+<h2>📚 All Articles</h2>
+
+<p>
+Browse all guides and tutorials.
+</p>
 
 <a href="/blog">
-  View All Blog Posts →
+  View Blog →
 </a>
 
 <footer style="margin-top: 40px;">
-  <p>© 2026 Career Growth Hub</p>
+  <p>© 2026 Career Growth Hub. All rights reserved.</p>
 </footer>
